@@ -1,18 +1,26 @@
 extends CharacterBody2D
 
 var velocidad = 400.0
+var pos_x = 50
 
-# _ready se ejecuta una sola vez al arrancar
 func _ready():
-	# Lo ubicamos a la izquierda (X=50) y a la mitad de la altura (Y=324)
-	position = Vector2(50, 324)
+	position = Vector2(pos_x, 324)
 
 func _physics_process(delta):
-	var direccion = 0
+	var dir = 0
 	if Input.is_physical_key_pressed(KEY_W):
-		direccion -= 1
+		dir -= 1
 	if Input.is_physical_key_pressed(KEY_S):
-		direccion += 1
+		dir += 1
 		
-	velocity.y = direccion * velocidad
+	velocity.y = dir * velocidad
 	move_and_slide()
+	position.x = pos_x
+
+
+func _on_btn_continuar_pressed() -> void:
+	pass
+
+
+func _on_btn_reiniciar_pressed() -> void:
+	pass
